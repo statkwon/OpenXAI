@@ -106,7 +106,8 @@ if __name__ == '__main__':
                     std_err = np.std(score) / np.sqrt(len(score))
                     print(f"{metric}: {mean_score:.3f} \u00B1 {std_err:.3f}")
                     if metric in stability_metrics:
-                        log_mu, log_std = np.log(mean_score), np.log(std_err)
+                        log_mu = np.log(mean_score)
+                        log_std = np.std(np.log(score)) / np.sqrt(len(score))
                         print(f"log({metric}): {log_mu:.3f} \u00B1 {log_std:.3f}")
 
                     # Save results
